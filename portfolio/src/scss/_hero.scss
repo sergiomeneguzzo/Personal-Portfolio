@@ -11,7 +11,6 @@
     top: 50%;
     left: 5%;
     width: 40%;
-    height: auto;
     transform: translateY(-50%);
     opacity: 0.2;
     pointer-events: none;
@@ -25,27 +24,21 @@
     width: 80%;
     max-width: 1200px;
     margin: 0 auto;
-
     font-family: variables.$font-primary;
     font-size: clamp(8rem, 20vw, 15rem);
-    line-height: 0.9;
-    letter-spacing: -5px;
+    line-height: 1;
+    letter-spacing: -2px;
     color: variables.$color-dark;
     text-transform: uppercase;
     text-align: center;
     font-weight: bold;
 
-    span {
+    > span {
       display: block;
+      white-space: nowrap; // evita i caporiga indesiderati
     }
-
-    span:first-child {
-      text-align: right;
-    }
-
-    span:last-child {
-      text-align: left;
-    }
+    span:first-child { text-align: right; }
+    span:last-child  { text-align: left; }
   }
 
   @media (max-width: 768px) {
@@ -54,12 +47,55 @@
       left: 50%;
       transform: translate(-50%, -50%);
     }
-
     .hero-title {
       top: 55%;
       width: 90%;
-      font-size: clamp(4rem, 15vw, 8rem);
-      letter-spacing: -3px;
+      font-size: clamp(6rem, 25vw, 14rem);
+      letter-spacing: -1px;
     }
   }
 }
+
+/* — Lettura lettere e animazioni — */
+.hero-title .letter {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;    // qui riattivo il ritaglio!
+  height: 1em;         // fissa l'altezza al font
+  line-height: 1;      // linea compatta
+}
+
+.hero-title .letter .front,
+.hero-title .letter .back {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.hero-title .letter .front { z-index: 2; }
+.hero-title .letter .back  { z-index: 1; }
+
+@keyframes out-left  { from { transform: translateX(0); }    to { transform: translateX(-100%); } }
+@keyframes in-left   { from { transform: translateX(100%); }  to { transform: translateX(0);    } }
+
+@keyframes out-right { from { transform: translateX(0); }    to { transform: translateX(100%); } }
+@keyframes in-right  { from { transform: translateX(-100%); } to { transform: translateX(0);    } }
+
+@keyframes out-up    { from { transform: translateY(0); }    to { transform: translateY(-100%); } }
+@keyframes in-up     { from { transform: translateY(100%); }  to { transform: translateY(0);    } }
+
+@keyframes out-down  { from { transform: translateY(0); }    to { transform: translateY(100%); } }
+@keyframes in-down   { from { transform: translateY(-100%); } to { transform: translateY(0);    } }
+
+/* classi di utilità (1s, ease-in-out) */
+.animate-out-left   { animation: out-left   1s ease-in-out forwards; }
+.animate-in-left    { animation: in-left    1s ease-in-out forwards; }
+
+.animate-out-right  { animation: out-right  1s ease-in-out forwards; }
+.animate-in-right   { animation: in-right   1s ease-in-out forwards; }
+
+.animate-out-up     { animation: out-up     1s ease-in-out forwards; }
+.animate-in-up      { animation: in-up      1s ease-in-out forwards; }
+
+.animate-out-down   { animation: out-down   1s ease-in-out forwards; }
+.animate-in-down    { animation: in-down    1s ease-in-out forwards; }
