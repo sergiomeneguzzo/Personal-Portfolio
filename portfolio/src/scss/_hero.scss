@@ -1,0 +1,65 @@
+@use 'variables';
+
+.hero-main {
+  position: relative;
+  height: 80vh;
+  overflow: hidden;
+  background: variables.$color-light;
+
+  .hero-graphic {
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    width: 40%;
+    height: auto;
+    transform: translateY(-50%);
+    opacity: 0.2;
+    pointer-events: none;
+  }
+
+  .hero-title {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    font-family: variables.$font-primary;
+    font-size: clamp(8rem, 20vw, 15rem);
+    line-height: 0.9;
+    letter-spacing: -5px;
+    color: variables.$color-dark;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bold;
+
+    span {
+      display: block;
+    }
+
+    span:first-child {
+      text-align: right;
+    }
+
+    span:last-child {
+      text-align: left;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-graphic {
+      width: 60%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .hero-title {
+      top: 55%;
+      width: 90%;
+      font-size: clamp(4rem, 15vw, 8rem);
+      letter-spacing: -3px;
+    }
+  }
+}
