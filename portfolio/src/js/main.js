@@ -1,10 +1,18 @@
-import '../scss/main.scss'
-import {initLenis} from "./lenis.js";
+import '../scss/main.scss';
+import { initLenis } from './lenis.js';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import "./cursor.js";
-import {initTitleAnimation} from "./gsap.js";
+import './cursor.js';
+import { initTitleAnimation, initNavHoverEffect } from './gsap.js';
+import { updateItalianTime, updateAge, updateExperience } from './livedata.js';
+import { initLoaderAnimation } from './loader.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-    initLenis();
-    initTitleAnimation();
+  initLoaderAnimation();
+  initLenis();
+  initTitleAnimation();
+  initNavHoverEffect();
+  updateItalianTime();
+  updateAge();
+  updateExperience();
+  setInterval(updateItalianTime, 60 * 1000);
 });
