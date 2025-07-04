@@ -9,8 +9,8 @@ export function initTitleAnimation() {
   window.requestAnimationFrame(() => {
     letters.forEach((container) => {
       const front = container.querySelector('.front');
-      container.style.width = `${front.offsetWidth}px`;
-      container.style.height = `${front.offsetHeight}px`;
+      container.style.width = `${front.offsetWidth + 6}px`;
+      container.style.height = `${front.offsetHeight + 6}px`;
     });
   });
 

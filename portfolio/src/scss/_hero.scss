@@ -58,9 +58,8 @@
       top: 45%;
       left: 50%;
       transform: translate(-50%, -45%);
-      //width: calc(100% - 2rem);
       font-size: clamp(4rem, 10vw, 6rem);
-      letter-spacing: -1px;
+      letter-spacing: -6px;
       line-height: 1.1;
     }
   }
@@ -70,7 +69,7 @@
   position: relative;
   display: inline-block;
   overflow: hidden;
-  height: 1em;
+  height: 1.2rem;
   line-height: 1;
 }
 
