@@ -1,6 +1,6 @@
 import Lenis from '@studio-freight/lenis'
 
-let lenis
+export let lenis
 
 export function initLenis() {
     lenis = new Lenis()

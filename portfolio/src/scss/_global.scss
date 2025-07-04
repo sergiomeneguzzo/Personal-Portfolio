@@ -15,7 +15,41 @@ body {
   font-family: variables.$font-primary;
   background: variables.$color-light;
   color: variables.$color-dark;
-  overflow-x: hidden;
+}
+
+html, body {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: rgba(0,0,0,.1);
+  z-index: 10000;
+  pointer-events: none;
+
+  .scroll-bar__progress {
+    width: 100%;
+    height: 100%;
+    background: variables.$color-dark;
+    transform-origin: left center;
+    transform: scaleX(0);
+  }
+}
+
+.no-scroll {
+  inset: 0;
+  position: fixed !important;
+  height: 100vh;
+  overflow: hidden !important;
 }
 
 a {
@@ -101,15 +135,26 @@ a {
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
-    text-align: center;
+    text-align: left;
+    row-gap: .75rem;
 
+    .top-left,
     .top-center,
     .top-right {
-      align-items: center;
+      align-items: flex-start;
+    }
+
+    .top-left .name,
+    .top-left .role,
+    .top-center .location,
+    .top-center .place,
+    .top-right .nav-label,
+    .top-right .nav-links a {
+      font-size: 1.4rem;
     }
 
     .top-right .nav-links {
-      justify-content: center;
+      justify-content: flex-start;
     }
   }
 }
