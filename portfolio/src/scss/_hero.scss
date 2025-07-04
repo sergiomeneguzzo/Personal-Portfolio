@@ -21,13 +21,13 @@
     top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 80%;
-    max-width: 1200px;
+    max-width: 90vw;
+    width: max-content;
     margin: 0 auto;
     font-family: variables.$font-primary;
-    font-size: clamp(8rem, 20vw, 15rem);
+    font-size: clamp(8rem, 20vw, 14rem);
     line-height: 1;
-    letter-spacing: -2px;
+    letter-spacing: -6px;
     color: variables.$color-dark;
     text-transform: uppercase;
     text-align: center;
@@ -50,8 +50,7 @@
       top: 45%;
       left: 50%;
       transform: translate(-50%, -45%);
-      width: calc(100% - 2rem);
-      padding: 0 1rem;
+      //width: calc(100% - 2rem);
       font-size: clamp(4rem, 10vw, 6rem);
       letter-spacing: -1px;
       line-height: 1.1;
@@ -149,33 +148,16 @@
   }
 }
 
-$gradual-ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+$letter-ease-in: ease-in;
 
-/* classi di utilità (1s, cubic-bezier) */
-.animate-out-left {
-  animation: out-left 1s #{$gradual-ease} forwards;
-}
-.animate-in-left {
-  animation: in-left 1s #{$gradual-ease} forwards;
-}
+.animate-out-left   { animation: out-left   0.6s $letter-ease-in forwards; }
+.animate-in-left    { animation: in-left    0.6s $letter-ease-in forwards; }
 
-.animate-out-right {
-  animation: out-right 1s #{$gradual-ease} forwards;
-}
-.animate-in-right {
-  animation: in-right 1s #{$gradual-ease} forwards;
-}
+.animate-out-right  { animation: out-right  0.6s $letter-ease-in forwards; }
+.animate-in-right   { animation: in-right   0.6s $letter-ease-in forwards; }
 
-.animate-out-up {
-  animation: out-up 1s #{$gradual-ease} forwards;
-}
-.animate-in-up {
-  animation: in-up 1s #{$gradual-ease} forwards;
-}
+.animate-out-up     { animation: out-up     0.6s $letter-ease-in forwards; }
+.animate-in-up      { animation: in-up      0.6s $letter-ease-in forwards; }
 
-.animate-out-down {
-  animation: out-down 1s #{$gradual-ease} forwards;
-}
-.animate-in-down {
-  animation: in-down 1s #{$gradual-ease} forwards;
-}
+.animate-out-down   { animation: out-down   0.6s $letter-ease-in forwards; }
+.animate-in-down    { animation: in-down    0.6s $letter-ease-in forwards; }

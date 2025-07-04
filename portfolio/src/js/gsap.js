@@ -1,7 +1,7 @@
 export function initTitleAnimation() {
   const letters = Array.from(document.querySelectorAll('.hero-title .letter'));
   const dirs = ['left', 'right', 'up', 'down'];
-  const duration = 1000;
+  const duration = 600;
   window.requestAnimationFrame(() => {
     letters.forEach((container) => {
       const front = container.querySelector('.front');
@@ -33,23 +33,8 @@ export function initTitleAnimation() {
 
   (function loop() {
     animateOne();
-    const delay = 3000 + Math.random() * 3000;
+    const delay = 2000 + Math.random() * 2000;
     setTimeout(loop, delay);
   })();
 }
 
-export function initNavHoverEffect() {
-  document.querySelectorAll('.nav-links a').forEach((link) => {
-    const front = link.querySelector('.front');
-    const back = link.querySelector('.back');
-
-    link.addEventListener('mouseenter', () => {
-      gsap.to(front, { y: '-100%', duration: 0.8, ease: 'power2.out' });
-      gsap.to(back, { y: '0%', duration: 0.8, ease: 'power2.out' });
-    });
-    link.addEventListener('mouseleave', () => {
-      gsap.to(front, { y: '0%', duration: 0.8, ease: 'power2.out' });
-      gsap.to(back, { y: '100%', duration: 0.8, ease: 'power2.out' });
-    });
-  });
-}
