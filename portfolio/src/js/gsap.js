@@ -47,39 +47,33 @@ export function initSkillsAnimation() {
 
   skills.forEach((skill, index) => {
     const dir = index % 2 === 0 ? 1 : -1;
-    const distance = 100;
-    const baseDuration = 20;
+    const distance = 30;
+    const baseDuration = 10;
 
     gsap.set(skill, {
-      xPercent: dir > 0 ? -distance : distance
+      xPercent: dir * -distance,
     });
-
-    if (dir > 0) {
-      skill.style.transform = 'scaleX(-1)';
-    }
-
     const tween = gsap.to(skill, {
-      xPercent: dir > 0 ? distance : -distance,
+      xPercent: dir * distance,
       duration: baseDuration,
-      ease: 'none',
-      repeat: -1
+      ease: 'power1.inOut',
+      repeat: -1,
+      yoyo: true,
     });
 
     let lastY = window.scrollY;
-
     ScrollTrigger.create({
       trigger: '.skills-section',
       start: 'top bottom',
       end: 'bottom top',
       scrub: true,
-      onUpdate: self => {
+      onUpdate: (self) => {
         const currentY = window.scrollY;
         const delta = currentY - lastY;
         lastY = currentY;
-
-        const velocity = gsap.utils.clamp(0.5, 10, 1 + Math.abs(delta) / 10);
+        const velocity = gsap.utils.clamp(0.5, 8, 1 + Math.abs(delta) / 10);
         tween.timeScale(velocity);
-      }
+      },
     });
   });
 }
@@ -89,7 +83,7 @@ export function initContactAnimation() {
 
   gsap.set(letters, {
     y: '150%',
-    force3D: true
+    force3D: true,
   });
 
   if (window.innerWidth > 768) {
@@ -98,15 +92,15 @@ export function initContactAnimation() {
       ease: 'power2.out',
       stagger: {
         each: 0.15,
-        from: 'start'
+        from: 'start',
       },
       scrollTrigger: {
         trigger: '.contact-section',
         start: 'top+=200 center',
         end: 'top+=400 center',
         scrub: 1,
-        markers: false
-      }
+        markers: false,
+      },
     });
   } else {
     gsap.to(letters, {
@@ -114,17 +108,15 @@ export function initContactAnimation() {
       ease: 'power2.out',
       stagger: {
         each: 0.15,
-        from: 'start'
+        from: 'start',
       },
       scrollTrigger: {
         trigger: '.contact-section',
         start: 'top bottom',
         end: 'top center',
         scrub: 0.2,
-        markers: false
-      }
+        markers: false,
+      },
     });
   }
 }
-
-
