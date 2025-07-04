@@ -1,7 +1,15 @@
 @use 'variables';
 
-.hero-main {
+.hero-wrapper {
   position: relative;
+  height: calc(80vh + 100vh);
+}
+
+.hero-main {
+  z-index: 0;
+  top: 0; left: 0;
+  width: 100%;
+  position: absolute;
   height: 80vh;
   overflow: hidden;
   background: variables.$color-light;

@@ -1,3 +1,7 @@
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger);
+
 export function initTitleAnimation() {
   const letters = Array.from(document.querySelectorAll('.hero-title .letter'));
   const dirs = ['left', 'right', 'up', 'down'];
