@@ -43,35 +43,84 @@
   .contact-content {
     text-align: center;
 
-    .contact-button {
-      display: inline-block;
-      padding: 1rem 2rem;
+    .btn-primary {
+      position: relative;
+      overflow: hidden;
       background: variables.$color-dark;
       color: variables.$color-light;
-      font-family: variables.$font-secondary;
-      font-size: 1.2rem;
+      padding: 1rem 2rem;
+      border: 2px solid variables.$color-dark;
+      border-radius: 50px;
+      font-size: 1.4rem;
+      cursor: pointer;
+      z-index: 1;
       text-decoration: none;
-      border-radius: 999px;
-      transition: background 0.3s ease;
+      display: inline-block;
+      transition: color 0.4s ease, border-color 0.4s ease, transform 0.2s ease;
+
+      &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: variables.$color-light;
+        border-radius: 50px;
+        transform: scaleY(0);
+        transform-origin: top center;
+        transition: transform 0.4s ease;
+        z-index: 1;
+      }
+
+      .btn-span {
+        position: relative;
+        z-index: 2;
+        transition: color 0.4s ease;
+      }
 
       &:hover {
-        background: darken(variables.$color-dark, 10%);
+        border-color: variables.$color-dark;
+        transform: translateY(-1px);
+
+        &::after {
+          transform: scaleY(1);
+        }
+
+        .btn-span {
+          color: variables.$color-dark !important;
+        }
+      }
+
+      &:active {
+        transform: translateY(0);
       }
     }
   }
 
   .contact-socials {
     display: flex;
-    gap: 1rem;
+    gap: 1.5rem;
 
-    a {
+    .social-link {
       font-family: variables.$font-secondary;
-      font-size: 0.9rem;
+      font-size: 1rem;
       text-decoration: none;
       color: variables.$color-dark;
+      position: relative;
+      display: inline-block;
+      padding: 0.5rem 1rem;
 
-      &:hover {
-        text-decoration: underline;
+      .text-stack {
+        display: block;
+        height: 1.8em;
+        overflow: hidden;
+        line-height: 1;
+      }
+
+      .text-primary,
+      .text-secondary {
+        display: block;
+        will-change: transform, opacity;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        color: inherit;
       }
     }
   }
@@ -91,17 +140,21 @@
       display: flex;
       justify-content: center;
 
-      .contact-button {
+      .btn-primary {
         padding: 0.8rem 1.5rem;
         font-size: 1rem;
-        width: auto;
       }
     }
 
     .contact-socials {
       flex-wrap: wrap;
       justify-content: center;
+      gap: 1rem;
+
+      .social-link {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+      }
     }
   }
-
 }

@@ -48,9 +48,30 @@
       <nav class="top-right">
         <div class="nav-label">NAVIGATION</div>
         <ul class="nav-links">
-          <li><a href="#">ABOUT</a></li>
-          <li><a href="#">WORK</a></li>
-          <li><a href="#">CONTACT</a></li>
+          <li>
+            <a href="#about">
+              <span class="text-stack">
+                <span class="text-primary">ABOUT</span>
+                <span class="text-secondary">ABOUT</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="#skills">
+              <span class="text-stack">
+                <span class="text-primary">SKILLS</span>
+                <span class="text-secondary">SKILLS</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="#contact">
+              <span class="text-stack">
+                <span class="text-primary">CONTACT</span>
+                <span class="text-secondary">CONTACT</span>
+              </span>
+            </a>
+          </li>
         </ul>
       </nav>
     </header>
@@ -120,16 +141,14 @@
         </h1>
       </section>
 
-      <section class="about-me">
+      <section class="about-me" id="about">
         <div class="hello-container">
           <h2 class="hello-text">
             <span class="hello-letter">H</span>
             <span class="hello-letter">E</span>
             <span class="hello-letter">L</span>
             <span class="hello-letter">L</span>
-
             <img class="hello-photo hello-letter" src="/me.jpg" alt="" />
-
             <span class="hello-right desktop">
               <span class="hello-letter">O</span>
               <span class="hello-letter">O</span>
@@ -143,24 +162,24 @@
         </div>
         <div class="about-content">
           <p class="description">
-            My name is Sergio, and I'm a front-end developer, who creates
-            websites with a special focus on animations and user interaction.<br />
-            I'm ready to bring your ideas to life and add a touch of originality
-            to the online space.
+            Full Stack Developer from Italy focused on building scalable and
+            maintainable software.<br />
+            I work across both frontend and backend to deliver complete, robust
+            web solutions.
           </p>
           <a href="#more" class="more-link">MORE ABOUT ME</a>
         </div>
       </section>
     </div>
 
-    <section class="skills-section">
+    <section class="skills-section" id="skills">
       <div class="skill">UI/UX DEVELOPMENT</div>
       <div class="skill">SOFTWARE DEVELOPMENT</div>
       <div class="skill">API INTEGRATION</div>
       <div class="skill">DATABASE MANAGEMENT</div>
     </section>
 
-    <section class="contact-section">
+    <section class="contact-section" id="contact">
       <div class="contact-title">
         <span class="contact-letter" data-letter="L">L</span>
         <span class="contact-letter" data-letter="E">E</span>
@@ -174,18 +193,41 @@
         <span class="contact-letter" data-letter="K">K</span>
       </div>
       <div class="contact-content">
-        <a class="contact-button" href="mailto:sergiomeneguzzo.dev@gmail.com"
-          >CONTACT ME</a
+        <a class="btn-primary" href="mailto:sergiomeneguzzo.dev@gmail.com"
+          ><span class="btn-span">CONTACT ME</span></a
         >
       </div>
       <div class="contact-socials">
-        <a href="https://www.linkedin.com/in/sergiomeneguzzo" target="_blank"
-          >LinkedIn</a
+        <a
+          href="https://www.linkedin.com/in/sergio-meneguzzo"
+          target="_blank"
+          class="social-link"
         >
-        <a href="https://github.com/sergiomeneguzzo" target="_blank">GitHub</a>
-        <a href="https://instagram.com/sergiomeneguzzo" target="_blank"
-          >Instagram</a
+          <span class="text-stack">
+            <span class="text-primary">Linkedin</span>
+            <span class="text-secondary">Connect</span>
+          </span>
+        </a>
+        <a
+          href="https://github.com/sergiomeneguzzo"
+          target="_blank"
+          class="social-link"
         >
+          <span class="text-stack">
+            <span class="text-primary">GitHub</span>
+            <span class="text-secondary">Follow</span>
+          </span>
+        </a>
+        <a
+          href="https://instagram.com/sergio_meneguzzo"
+          target="_blank"
+          class="social-link"
+        >
+          <span class="text-stack">
+            <span class="text-primary">Instagram</span>
+            <span class="text-secondary">Follow</span>
+          </span>
+        </a>
       </div>
     </section>
 

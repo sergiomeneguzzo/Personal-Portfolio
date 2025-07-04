@@ -134,6 +134,26 @@ a {
   background: variables.$color-light;
   color: variables.$color-dark;
 
+  li a {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    padding: 0.25rem 0;
+    text-decoration: none;
+    .text-stack {
+      display: block;
+      height: 1em;
+      overflow: hidden;
+      line-height: 1;
+      position: relative;
+    }
+    .text-primary,
+    .text-secondary {
+      display: block;
+      will-change: transform, opacity;
+    }
+  }
+
   .top-left,
   .top-center,
   .top-right {
