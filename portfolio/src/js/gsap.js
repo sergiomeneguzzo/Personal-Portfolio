@@ -92,18 +92,39 @@ export function initContactAnimation() {
     force3D: true
   });
 
-  gsap.to(letters, {
-    y: '0%',
-    ease: 'power2.out',
-    stagger: {
-      each: 0.15,
-      from: 'start'
-    },
-    scrollTrigger: {
-      trigger: '.contact-section',
-      start: 'top+=200 center',
-      end: 'top+=400 center',
-      scrub: 1
-    }
-  });
+  if (window.innerWidth > 768) {
+    gsap.to(letters, {
+      y: '0%',
+      ease: 'power2.out',
+      stagger: {
+        each: 0.15,
+        from: 'start'
+      },
+      scrollTrigger: {
+        trigger: '.contact-section',
+        start: 'top+=200 center',
+        end: 'top+=400 center',
+        scrub: 1,
+        markers: false
+      }
+    });
+  } else {
+    gsap.to(letters, {
+      y: '0%',
+      ease: 'power2.out',
+      stagger: {
+        each: 0.15,
+        from: 'start'
+      },
+      scrollTrigger: {
+        trigger: '.contact-section',
+        start: 'top bottom',
+        end: 'top center',
+        scrub: 0.2,
+        markers: false
+      }
+    });
+  }
 }
+
+

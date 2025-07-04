@@ -51,7 +51,7 @@ function initScrollAnimations() {
     scrollTrigger: {
       trigger: '.hero-wrapper',
       start: 'top top',
-      end: '+=300vh',
+      end: isMobile ? '+=200vh' : '+=300vh',
       scrub: 1,
       pin: !isMobile,
       anticipatePin: 1,
@@ -61,7 +61,7 @@ function initScrollAnimations() {
   });
 
   tl.to('.about-me', {
-    y: '-80vh',
+    y: isMobile ? '-80vh' : '-80vh',
     ease: 'none',
     force3D: true
   }, 0);
@@ -70,34 +70,35 @@ function initScrollAnimations() {
     y: '0%',
     ease: 'power2.out',
     stagger: {
-      each: 0.24,
+      each: isMobile ? 0.15 : 0.24,
       from: 'start'
     },
     force3D: true
-  }, '60%');
+  }, isMobile ? '30%' : '60%');
 
   gsap.to('.hero-title > span:first-child', {
-    x: '20vw',
+    x: isMobile ? '10vw' : '20vw',
     ease: 'none',
     scrollTrigger: {
       trigger: '.hero-wrapper',
       start: 'top top',
-      end: '+=100vh',
+      end: isMobile ? '+=100vh' : '+=100vh',
       scrub: true
     }
   });
 
   gsap.to('.hero-title > span:last-child', {
-    x: '-20vw',
+    x: isMobile ? '-10vw' : '-20vw',
     ease: 'none',
     scrollTrigger: {
       trigger: '.hero-wrapper',
       start: 'top top',
-      end: '+=100vh',
+      end: isMobile ? '+=100vh' : '+=100vh',
       scrub: true
     }
   });
 
   ScrollTrigger.refresh();
 }
+
 
