@@ -51,7 +51,7 @@ function initScrollAnimations() {
     scrollTrigger: {
       trigger: '.hero-wrapper',
       start: 'top top',
-      end: isMobile ? '+=200vh' : '+=300vh',
+      end: isMobile ? '+=100vh' : '+=600vh',
       scrub: 1,
       pin: !isMobile,
       anticipatePin: 1,
@@ -82,7 +82,7 @@ function initScrollAnimations() {
     scrollTrigger: {
       trigger: '.hero-wrapper',
       start: 'top top',
-      end: isMobile ? '+=100vh' : '+=100vh',
+      end: isMobile ? '+=300vh' : '+=300vh',
       scrub: true
     }
   });
@@ -93,7 +93,7 @@ function initScrollAnimations() {
     scrollTrigger: {
       trigger: '.hero-wrapper',
       start: 'top top',
-      end: isMobile ? '+=100vh' : '+=100vh',
+      end: isMobile ? '+=300vh' : '+=300vh',
       scrub: true
     }
   });
