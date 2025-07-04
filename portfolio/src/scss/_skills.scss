@@ -1,0 +1,42 @@
+@use 'variables';
+
+.skills-section {
+  padding: 10vh 2rem;
+  background: variables.$color-light;
+  color: variables.$color-dark;
+  display: flex;
+  flex-direction: column;
+  gap: 8vh;
+  overflow: hidden;
+  position: relative;
+
+  .skill {
+    font-family: variables.$font-primary;
+    font-size: clamp(6rem, 20vw, 16rem);
+    font-weight: bold;
+    text-transform: uppercase;
+    white-space: nowrap;
+
+    &:nth-child(1) {
+      text-align: left;
+    }
+    &:nth-child(2) {
+      text-align: right;
+    }
+    &:nth-child(3) {
+      text-align: left;
+    }
+    &:nth-child(4) {
+      text-align: right;
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 6vh 1rem;
+    gap: 10vh;
+
+    .skill {
+      font-size: clamp(3rem, 15vw, 8rem);
+    }
+  }
+}

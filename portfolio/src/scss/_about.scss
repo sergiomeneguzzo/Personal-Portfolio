@@ -115,6 +115,10 @@
   }
 
   @media (max-width: 768px) {
+    .hero-wrapper {
+      height: auto !important;
+      min-height: 0 !important;
+    }
     padding: 6rem 1.5rem 4rem;
 
     .about-content {

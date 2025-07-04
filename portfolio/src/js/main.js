@@ -2,7 +2,7 @@ import '../scss/main.scss';
 import {initLenis, lenis} from './lenis.js';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './cursor.js';
-import { initTitleAnimation } from './gsap.js';
+import {initContactAnimation, initSkillsAnimation, initTitleAnimation} from './gsap.js';
 import { updateItalianTime, updateAge, updateExperience } from './livedata.js';
 import { initLoaderAnimation } from './loader.js';
 import { gsap } from 'gsap';
@@ -14,12 +14,9 @@ gsap.registerPlugin(ScrollTrigger);
 document.addEventListener('DOMContentLoaded', () => {
   if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
   window.scrollTo({ top: 0, left: 0 });
-
   initLenis();
   initLoaderAnimation();
-
   initScrollBar();
-
   initTitleAnimation();
   updateItalianTime();
   updateAge();
@@ -27,12 +24,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   setTimeout(() => {
     initScrollAnimations();
+    initSkillsAnimation();
+    initContactAnimation();
   }, 100);
 
   setInterval(updateItalianTime, 60 * 1000);
 });
 
 function initScrollAnimations() {
+  const isMobile = window.innerWidth <= 768;
   const letters = Array.from(document.querySelectorAll('.hello-letter'))
       .filter(el => {
         const group = el.closest('.hello-right');
@@ -53,7 +53,7 @@ function initScrollAnimations() {
       start: 'top top',
       end: '+=300vh',
       scrub: 1,
-      pin: true,
+      pin: !isMobile,
       anticipatePin: 1,
       invalidateOnRefresh: true,
       refreshPriority: -1,
@@ -70,11 +70,33 @@ function initScrollAnimations() {
     y: '0%',
     ease: 'power2.out',
     stagger: {
-      each: 0.16,
+      each: 0.24,
       from: 'start'
     },
     force3D: true
   }, '60%');
+
+  gsap.to('.hero-title > span:first-child', {
+    x: '20vw',
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '.hero-wrapper',
+      start: 'top top',
+      end: '+=100vh',
+      scrub: true
+    }
+  });
+
+  gsap.to('.hero-title > span:last-child', {
+    x: '-20vw',
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '.hero-wrapper',
+      start: 'top top',
+      end: '+=100vh',
+      scrub: true
+    }
+  });
 
   ScrollTrigger.refresh();
 }

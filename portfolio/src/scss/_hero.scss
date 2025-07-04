@@ -3,6 +3,10 @@
 .hero-wrapper {
   position: relative;
   height: calc(80vh + 100vh);
+
+  @media (max-width: 768px) {
+    height: 140vh;
+  }
 }
 
 .hero-main {

@@ -42,3 +42,68 @@ export function initTitleAnimation() {
   })();
 }
 
+export function initSkillsAnimation() {
+  const skills = document.querySelectorAll('.skills-section .skill');
+
+  skills.forEach((skill, index) => {
+    const dir = index % 2 === 0 ? 1 : -1;
+    const distance = 100;
+    const baseDuration = 20;
+
+    gsap.set(skill, {
+      xPercent: dir > 0 ? -distance : distance
+    });
+
+    if (dir > 0) {
+      skill.style.transform = 'scaleX(-1)';
+    }
+
+    const tween = gsap.to(skill, {
+      xPercent: dir > 0 ? distance : -distance,
+      duration: baseDuration,
+      ease: 'none',
+      repeat: -1
+    });
+
+    let lastY = window.scrollY;
+
+    ScrollTrigger.create({
+      trigger: '.skills-section',
+      start: 'top bottom',
+      end: 'bottom top',
+      scrub: true,
+      onUpdate: self => {
+        const currentY = window.scrollY;
+        const delta = currentY - lastY;
+        lastY = currentY;
+
+        const velocity = gsap.utils.clamp(0.5, 10, 1 + Math.abs(delta) / 10);
+        tween.timeScale(velocity);
+      }
+    });
+  });
+}
+
+export function initContactAnimation() {
+  const letters = document.querySelectorAll('.contact-letter');
+
+  gsap.set(letters, {
+    y: '150%',
+    force3D: true
+  });
+
+  gsap.to(letters, {
+    y: '0%',
+    ease: 'power2.out',
+    stagger: {
+      each: 0.15,
+      from: 'start'
+    },
+    scrollTrigger: {
+      trigger: '.contact-section',
+      start: 'top+=200 center',
+      end: 'top+=400 center',
+      scrub: 1
+    }
+  });
+}
