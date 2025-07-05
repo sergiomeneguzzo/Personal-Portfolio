@@ -100,7 +100,7 @@ function initScrollAnimations() {
         trigger: '.hero-wrapper',
         start: '40% top',
         end: '+=150vh',
-        scrub: 3,
+        scrub: 2,
       },
     });
   } else {

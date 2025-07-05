@@ -33,29 +33,6 @@
     .hello-letter {
       display: inline-block;
     }
-
-    .hello-photo {
-      width: 20vw;
-      max-width: 300px;
-      margin: 0 1rem;
-      overflow: hidden;
-      border-radius: 5px;
-      flex-shrink: 0;
-
-      img {
-        display: block;
-        width: 100%;
-        height: auto;
-      }
-    }
-
-    .hello-right.mobile {
-      display: none;
-    }
-
-    .hello-right.desktop {
-      display: inline;
-    }
   }
 
   .about-content {
@@ -107,21 +84,8 @@
     top: 60vh;
 
     .hello-text {
-      font-size: clamp(4rem, 10vw, 6rem);
+      font-size: clamp(4.5rem, 10vw, 6rem);
       gap: 0.3rem;
-
-      .hello-photo {
-        width: 28vw;
-        max-width: 120px;
-      }
-
-      .hello-right.mobile {
-        display: inline !important;
-      }
-
-      .hello-right.desktop {
-        display: none !important;
-      }
     }
 
     .about-content {
