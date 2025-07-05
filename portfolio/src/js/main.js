@@ -13,6 +13,10 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { initScrollBar } from './scrollbar.js';
 
+if (location.hash) {
+  history.replaceState(null, '', location.pathname + location.search);
+}
+
 gsap.registerPlugin(ScrollTrigger);
 
 document.addEventListener('DOMContentLoaded', () => {
