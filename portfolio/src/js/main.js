@@ -56,78 +56,105 @@ function initScrollAnimations() {
     force3D: true,
   });
 
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: '.hero-wrapper',
-      start: 'top top',
-      end: isMobile ? '+=300vh' : '+=600vh',
-      scrub: 1,
-      pin: !isMobile,
-      anticipatePin: 1,
-      invalidateOnRefresh: true,
-      refreshPriority: -1,
-    },
-  });
-
-  tl.to(
-    '.about-me',
-    {
-      y: isMobile ? '-80vh' : '-80vh',
+  if (isMobile) {
+    gsap.to('.hero-title > span:first-child', {
+      x: '120vw',
       ease: 'none',
-      force3D: true,
-    },
-    0,
-  );
+      scrollTrigger: {
+        trigger: '.hero-wrapper',
+        start: 'top top',
+        end: '+=100vh',
+        scrub: 1.5,
+      },
+    });
 
-  tl.to(
-    letters,
-    {
+    gsap.to('.hero-title > span:last-child', {
+      x: '-120vw',
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.hero-wrapper',
+        start: 'top top',
+        end: '+=100vh',
+        scrub: 1.5,
+      },
+    });
+
+    gsap.to(letters, {
       y: '0%',
       ease: 'power2.out',
       stagger: {
-        each: isMobile ? 0.15 : 0.24,
+        each: 0.2,
         from: 'start',
       },
       force3D: true,
-    },
-    isMobile ? '80%' : '60%',
-  );
-
-  tl.to(
-    letters,
-    {
-      y: '0%',
-      ease: 'power2.out',
-      stagger: {
-        each: isMobile ? 0.15 : 0.24,
-        from: 'start',
+      scrollTrigger: {
+        trigger: '.hero-wrapper',
+        start: '40% top',
+        end: '+=150vh',
+        scrub: 3,
       },
-      force3D: true,
-    },
-    isMobile ? '30%' : '60%',
-  );
+    });
+  } else {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: '.hero-wrapper',
+        start: 'top top',
+        end: '+=600vh',
+        scrub: 1,
+        pin: true,
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
+        refreshPriority: -1,
+      },
+    });
 
-  gsap.to('.hero-title > span:first-child', {
-    x: isMobile ? '10vw' : '20vw',
-    ease: 'none',
-    scrollTrigger: {
-      trigger: '.hero-wrapper',
-      start: 'top top',
-      end: isMobile ? '+=300vh' : '+=300vh',
-      scrub: true,
-    },
-  });
+    tl.to(
+      '.about-me',
+      {
+        y: '-80vh',
+        ease: 'none',
+        force3D: true,
+      },
+      0,
+    );
 
-  gsap.to('.hero-title > span:last-child', {
-    x: isMobile ? '-10vw' : '-20vw',
-    ease: 'none',
-    scrollTrigger: {
-      trigger: '.hero-wrapper',
-      start: 'top top',
-      end: isMobile ? '+=300vh' : '+=300vh',
-      scrub: true,
-    },
-  });
+    tl.to(
+      letters,
+      {
+        y: '0%',
+        ease: 'power2.out',
+        stagger: {
+          each: 0.4,
+          from: 'start',
+          scrub: 2,
+        },
+        force3D: true,
+      },
+      '60%',
+    );
+
+    gsap.to('.hero-title > span:first-child', {
+      x: '20vw',
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.hero-wrapper',
+        start: 'top top',
+        end: '+=300vh',
+        scrub: true,
+      },
+    });
+
+    gsap.to('.hero-title > span:last-child', {
+      x: '-20vw',
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.hero-wrapper',
+        start: 'top top',
+        end: '+=300vh',
+        scrub: true,
+      },
+    });
+  }
 
   ScrollTrigger.refresh();
 }

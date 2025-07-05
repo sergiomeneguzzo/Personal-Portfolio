@@ -39,7 +39,7 @@
       max-width: 300px;
       margin: 0 1rem;
       overflow: hidden;
-      border-radius: 8px;
+      border-radius: 5px;
       flex-shrink: 0;
 
       img {
@@ -104,6 +104,7 @@
 
   @media (max-width: 768px) {
     padding: 6rem 1.5rem 4rem;
+    top: 60vh;
 
     .hello-text {
       font-size: clamp(4rem, 10vw, 6rem);
@@ -135,7 +136,7 @@
 
       .more-link {
         justify-self: center;
-        font-size: 1rem;
+        font-size: 1.2rem;
       }
     }
   }

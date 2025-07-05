@@ -32,11 +32,13 @@
   }
 
   @media (max-width: 768px) {
+    margin-top: 45rem;
+    margin-bottom: 10rem;
     padding: 6vh 1rem;
     gap: 10vh;
 
     .skill {
-      font-size: clamp(3rem, 15vw, 8rem);
+      font-size: clamp(4rem, 15vw, 8rem);
     }
   }
 }
