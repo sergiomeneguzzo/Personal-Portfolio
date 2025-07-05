@@ -16,7 +16,12 @@ import { initScrollBar } from './scrollbar.js';
 gsap.registerPlugin(ScrollTrigger);
 
 document.addEventListener('DOMContentLoaded', () => {
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+    window.scrollTo(0, 0);
+  }
   initLenis();
+  lenis.scrollTo(0, { immediate: true });
   initLoaderAnimation();
   initScrollBar();
   updateItalianTime();
