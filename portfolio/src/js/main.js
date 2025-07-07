@@ -1,6 +1,5 @@
 import '../scss/main.scss';
 import { initLenis, lenis } from './lenis.js';
-import '@fortawesome/fontawesome-free/css/all.min.css';
 import './cursor.js';
 import {
   initContactAnimation,
