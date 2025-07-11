@@ -12,6 +12,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { initScrollBar } from './scrollbar.js';
 import { fetchHeaderContent } from './cms/header.js';
+//import { fetchAboutImage } from './cms/image.js';
 
 if (location.hash) {
   history.replaceState(null, '', location.pathname + location.search);
@@ -29,6 +30,7 @@ document.addEventListener('DOMContentLoaded', async() => {
   initLoaderAnimation();
   initScrollBar();
   await fetchHeaderContent();
+  //await fetchAboutImage();
   updateItalianTime();
   updateAge();
   updateExperience();
@@ -65,6 +67,9 @@ function initScrollAnimations() {
     y: '200%',
     force3D: true,
   });
+
+  // const helloImage = document.querySelector('.hello-image-wrapper');
+  // gsap.set(helloImage, { y: '200%', opacity: 0, force3D: true });
 
   if (isMobile) {
     gsap.to('.hero-title > span:first-child', {
@@ -104,6 +109,17 @@ function initScrollAnimations() {
         scrub: 2,
       },
     });
+    // gsap.to(helloImage, {
+    //   y: '0%',
+    //   opacity: 1,
+    //   ease: 'power2.out',
+    //   scrollTrigger: {
+    //     trigger: '.hero-wrapper',
+    //     start: '40% top',
+    //     end: '+=150vh',
+    //     scrub: 2,
+    //   },
+    // });
   } else {
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -142,6 +158,15 @@ function initScrollAnimations() {
       },
       '60%',
     );
+    //
+    // if (helloImage) {
+    //   tl.to(helloImage, {
+    //     y: '0%',
+    //     opacity: 1,
+    //     ease: 'power2.out',
+    //     force3D: true,
+    //   }, '60%+=0.5');
+    // }
 
     gsap.to('.hero-title > span:first-child', {
       x: '20vw',
