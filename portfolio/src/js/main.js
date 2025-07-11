@@ -11,6 +11,7 @@ import { initLoaderAnimation } from './loader.js';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { initScrollBar } from './scrollbar.js';
+import { fetchHeaderContent } from './cms/header.js';
 
 if (location.hash) {
   history.replaceState(null, '', location.pathname + location.search);
@@ -18,7 +19,7 @@ if (location.hash) {
 
 gsap.registerPlugin(ScrollTrigger);
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async() => {
   if ('scrollRestoration' in history) {
     history.scrollRestoration = 'manual';
     window.scrollTo(0, 0);
@@ -27,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
   lenis.scrollTo(0, { immediate: true });
   initLoaderAnimation();
   initScrollBar();
+  await fetchHeaderContent();
   updateItalianTime();
   updateAge();
   updateExperience();
