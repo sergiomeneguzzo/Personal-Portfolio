@@ -1,14 +1,28 @@
 export function updateItalianTime() {
   const now = new Date();
-  const timeString = new Intl.DateTimeFormat('en-US', {
+  const timeString = new Intl.DateTimeFormat("en-US", {
     hour12: true,
-    hour: '2-digit',
-    minute: '2-digit',
-    timeZone: 'Europe/Rome',
+    hour: "2-digit",
+    minute: "2-digit",
+    timeZone: "Europe/Rome",
   }).format(now);
-  const [hm, period] = timeString.split(' ');
-  const formatted = hm.replace(':', ' ');
-  const el = document.querySelector('.time');
+  const [hm, period] = timeString.split(" ");
+  const formatted = hm.replace(":", " ");
+  const el = document.querySelector(".time");
+  if (el) el.textContent = `${formatted} ${period}`;
+}
+
+export function updateGoldCoastTime() {
+  const now = new Date();
+  const timeString = new Intl.DateTimeFormat("en-US", {
+    hour12: true,
+    hour: "2-digit",
+    minute: "2-digit",
+    timeZone: "Australia/Brisbane",
+  }).format(now);
+  const [hm, period] = timeString.split(" ");
+  const formatted = hm.replace(":", " ");
+  const el = document.querySelector(".time");
   if (el) el.textContent = `${formatted} ${period}`;
 }
 
@@ -23,7 +37,7 @@ export function updateAge() {
   )
     years--;
 
-  const el = document.querySelector('.name .number');
+  const el = document.querySelector(".name .number");
   if (el) el.textContent = years;
 }
 
@@ -38,7 +52,7 @@ export function updateExperience() {
   )
     years--;
 
-  const formatted = String(years).padStart(2, '0');
-  const el = document.querySelector('.role .number');
+  const formatted = String(years).padStart(2, "0");
+  const el = document.querySelector(".role .number");
   if (el) el.textContent = formatted;
 }

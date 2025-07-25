@@ -1,28 +1,33 @@
-import '../scss/main.scss';
-import { initLenis, lenis } from './lenis.js';
-import './cursor.js';
+import "../scss/main.scss";
+import { initLenis, lenis } from "./lenis.js";
+import "./cursor.js";
 import {
   initContactAnimation,
   initSkillsAnimation,
   initTitleAnimation,
-} from './gsap.js';
-import { updateItalianTime, updateAge, updateExperience } from './livedata.js';
-import { initLoaderAnimation } from './loader.js';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { initScrollBar } from './scrollbar.js';
-import { fetchHeaderContent } from './cms/header.js';
+} from "./gsap.js";
+import {
+  updateItalianTime,
+  updateAge,
+  updateExperience,
+  updateGoldCoastTime,
+} from "./livedata.js";
+import { initLoaderAnimation } from "./loader.js";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { initScrollBar } from "./scrollbar.js";
+import { fetchHeaderContent } from "./cms/header.js";
 //import { fetchAboutImage } from './cms/image.js';
 
 if (location.hash) {
-  history.replaceState(null, '', location.pathname + location.search);
+  history.replaceState(null, "", location.pathname + location.search);
 }
 
 gsap.registerPlugin(ScrollTrigger);
 
-document.addEventListener('DOMContentLoaded', async() => {
-  if ('scrollRestoration' in history) {
-    history.scrollRestoration = 'manual';
+document.addEventListener("DOMContentLoaded", async () => {
+  if ("scrollRestoration" in history) {
+    history.scrollRestoration = "manual";
     window.scrollTo(0, 0);
   }
   initLenis();
@@ -31,12 +36,13 @@ document.addEventListener('DOMContentLoaded', async() => {
   initScrollBar();
   await fetchHeaderContent();
   //await fetchAboutImage();
-  updateItalianTime();
+  //updateItalianTime();
+  updateGoldCoastTime();
   updateAge();
   updateExperience();
   initButtonHover3D();
-  initTextSwapHover('.contact-socials .social-link', '-20%');
-  initTextSwapHover('.top-bar .nav-links a', '-100%');
+  initTextSwapHover(".contact-socials .social-link", "-20%");
+  initTextSwapHover(".top-bar .nav-links a", "-100%");
 
   document.fonts.ready.then(() => {
     initTitleAnimation();
@@ -53,18 +59,18 @@ document.addEventListener('DOMContentLoaded', async() => {
 
 function initScrollAnimations() {
   const isMobile = window.innerWidth <= 768;
-  const letters = Array.from(document.querySelectorAll('.hello-letter')).filter(
+  const letters = Array.from(document.querySelectorAll(".hello-letter")).filter(
     (el) => {
-      const group = el.closest('.hello-right');
+      const group = el.closest(".hello-right");
       if (group) {
-        return window.getComputedStyle(group).display !== 'none';
+        return window.getComputedStyle(group).display !== "none";
       }
       return true;
-    },
+    }
   );
 
   gsap.set(letters, {
-    y: '200%',
+    y: "200%",
     force3D: true,
   });
 
@@ -72,40 +78,40 @@ function initScrollAnimations() {
   // gsap.set(helloImage, { y: '200%', opacity: 0, force3D: true });
 
   if (isMobile) {
-    gsap.to('.hero-title > span:first-child', {
-      x: '120vw',
-      ease: 'none',
+    gsap.to(".hero-title > span:first-child", {
+      x: "120vw",
+      ease: "none",
       scrollTrigger: {
-        trigger: '.hero-wrapper',
-        start: 'top top',
-        end: '+=100vh',
+        trigger: ".hero-wrapper",
+        start: "top top",
+        end: "+=100vh",
         scrub: 1.5,
       },
     });
 
-    gsap.to('.hero-title > span:last-child', {
-      x: '-120vw',
-      ease: 'none',
+    gsap.to(".hero-title > span:last-child", {
+      x: "-120vw",
+      ease: "none",
       scrollTrigger: {
-        trigger: '.hero-wrapper',
-        start: 'top top',
-        end: '+=100vh',
+        trigger: ".hero-wrapper",
+        start: "top top",
+        end: "+=100vh",
         scrub: 1.5,
       },
     });
 
     gsap.to(letters, {
-      y: '0%',
-      ease: 'power2.out',
+      y: "0%",
+      ease: "power2.out",
       stagger: {
         each: 0.2,
-        from: 'start',
+        from: "start",
       },
       force3D: true,
       scrollTrigger: {
-        trigger: '.hero-wrapper',
-        start: '40% top',
-        end: '+=150vh',
+        trigger: ".hero-wrapper",
+        start: "40% top",
+        end: "+=150vh",
         scrub: 2,
       },
     });
@@ -123,9 +129,9 @@ function initScrollAnimations() {
   } else {
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: '.hero-wrapper',
-        start: 'top top',
-        end: '+=600vh',
+        trigger: ".hero-wrapper",
+        start: "top top",
+        end: "+=600vh",
         scrub: 1,
         pin: true,
         anticipatePin: 1,
@@ -135,28 +141,28 @@ function initScrollAnimations() {
     });
 
     tl.to(
-      '.about-me',
+      ".about-me",
       {
-        y: '-80vh',
-        ease: 'none',
+        y: "-80vh",
+        ease: "none",
         force3D: true,
       },
-      0,
+      0
     );
 
     tl.to(
       letters,
       {
-        y: '0%',
-        ease: 'power2.out',
+        y: "0%",
+        ease: "power2.out",
         stagger: {
           each: 0.4,
-          from: 'start',
+          from: "start",
           scrub: 2,
         },
         force3D: true,
       },
-      '60%',
+      "60%"
     );
     //
     // if (helloImage) {
@@ -168,24 +174,24 @@ function initScrollAnimations() {
     //   }, '60%+=0.5');
     // }
 
-    gsap.to('.hero-title > span:first-child', {
-      x: '20vw',
-      ease: 'none',
+    gsap.to(".hero-title > span:first-child", {
+      x: "20vw",
+      ease: "none",
       scrollTrigger: {
-        trigger: '.hero-wrapper',
-        start: 'top top',
-        end: '+=300vh',
+        trigger: ".hero-wrapper",
+        start: "top top",
+        end: "+=300vh",
         scrub: true,
       },
     });
 
-    gsap.to('.hero-title > span:last-child', {
-      x: '-20vw',
-      ease: 'none',
+    gsap.to(".hero-title > span:last-child", {
+      x: "-20vw",
+      ease: "none",
       scrollTrigger: {
-        trigger: '.hero-wrapper',
-        start: 'top top',
-        end: '+=300vh',
+        trigger: ".hero-wrapper",
+        start: "top top",
+        end: "+=300vh",
         scrub: true,
       },
     });
@@ -195,10 +201,10 @@ function initScrollAnimations() {
 }
 
 function initButtonHover3D() {
-  const button = document.querySelector('.more-link');
+  const button = document.querySelector(".more-link");
   if (!button) return;
 
-  button.addEventListener('mousemove', (e) => {
+  button.addEventListener("mousemove", (e) => {
     const rect = button.getBoundingClientRect();
     const x = e.clientX - rect.left - rect.width / 2;
     const y = e.clientY - rect.top - rect.height / 2;
@@ -209,55 +215,55 @@ function initButtonHover3D() {
       rotationY: x * 0.05,
       rotationX: -y * 0.05,
       duration: 0.3,
-      ease: 'power2.out',
+      ease: "power2.out",
     });
   });
 
-  button.addEventListener('mouseleave', () => {
+  button.addEventListener("mouseleave", () => {
     gsap.to(button, {
       x: 0,
       y: 0,
       rotationX: 0,
       rotationY: 0,
       duration: 0.5,
-      ease: 'power2.out',
+      ease: "power2.out",
     });
   });
 }
 
-function initTextSwapHover(selector, secondaryEndY = '0%') {
+function initTextSwapHover(selector, secondaryEndY = "0%") {
   document.querySelectorAll(selector).forEach((link) => {
-    const primary = link.querySelector('.text-primary');
-    const secondary = link.querySelector('.text-secondary');
+    const primary = link.querySelector(".text-primary");
+    const secondary = link.querySelector(".text-secondary");
     if (!primary || !secondary) return;
 
     // stato iniziale
-    gsap.set(primary, { y: '0%', opacity: 1 });
-    gsap.set(secondary, { y: '100%', opacity: 0 });
+    gsap.set(primary, { y: "0%", opacity: 1 });
+    gsap.set(secondary, { y: "100%", opacity: 0 });
 
     // timeline con parametro
     const tl = gsap.timeline({ paused: true });
     tl.to(
       primary,
       {
-        y: '-100%',
+        y: "-100%",
         opacity: 0,
         duration: 0.3,
-        ease: 'power1.out',
+        ease: "power1.out",
       },
-      0,
+      0
     ).to(
       secondary,
       {
         y: secondaryEndY,
         opacity: 1,
         duration: 0.3,
-        ease: 'power1.out',
+        ease: "power1.out",
       },
-      0,
+      0
     );
 
-    link.addEventListener('mouseenter', () => tl.play());
-    link.addEventListener('mouseleave', () => tl.reverse());
+    link.addEventListener("mouseenter", () => tl.play());
+    link.addEventListener("mouseleave", () => tl.reverse());
   });
 }
