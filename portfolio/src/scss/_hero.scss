@@ -1,4 +1,4 @@
-@use 'variables';
+@use "variables";
 
 .hero-wrapper {
   position: relative;
@@ -18,7 +18,7 @@
   position: absolute;
   height: 80vh;
   overflow: hidden;
-  background: variables.$color-light;
+  background: var(--color-bg, variables.$color-light);
 
   .hero-graphic {
     position: absolute;
@@ -42,7 +42,7 @@
     font-size: clamp(8rem, 20vw, 14rem);
     line-height: 1;
     letter-spacing: -10px;
-    color: variables.$color-dark;
+    color: var(--color-text, variables.$color-dark);
     text-transform: uppercase;
     text-align: center;
     font-weight: bold;

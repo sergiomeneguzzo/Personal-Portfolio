@@ -7,7 +7,7 @@ import {
   initTitleAnimation,
 } from "./gsap.js";
 import {
-  updateItalianTime,
+  //updateItalianTime,
   updateAge,
   updateExperience,
   updateGoldCoastTime,
@@ -17,6 +17,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { initScrollBar } from "./scrollbar.js";
 import { fetchHeaderContent } from "./cms/header.js";
+import { initThemeToggle } from "./darkmode.js";
 //import { fetchAboutImage } from './cms/image.js';
 
 if (location.hash) {
@@ -43,6 +44,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   initButtonHover3D();
   initTextSwapHover(".contact-socials .social-link", "-20%");
   initTextSwapHover(".top-bar .nav-links a", "-100%");
+  initThemeToggle();
 
   document.fonts.ready.then(() => {
     initTitleAnimation();

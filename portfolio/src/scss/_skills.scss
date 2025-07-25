@@ -1,9 +1,9 @@
-@use 'variables';
+@use "variables";
 
 .skills-section {
   padding: 10vh 2rem;
-  background: variables.$color-light;
-  color: variables.$color-dark;
+  background: var(--color-bg, variables.$color-light);
+  color: var(--color-text, variables.$color-dark);
   display: flex;
   flex-direction: column;
   gap: 8vh;

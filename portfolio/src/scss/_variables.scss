@@ -1,7 +1,18 @@
 $font-primary: "Antonio", sans-serif;
 $font-secondary: "Poppins", sans-serif;
-
 $color-light: #ffffff;
-$color-dark:  #2c3333;
+$color-dark: #2c3333;
 
-$font-weight-medium: 500;
+@mixin expose-css-variables {
+  :root {
+    --color-bg: #{$color-light};
+    --color-text: #{$color-dark};
+    --font-primary: #{$font-primary};
+    --font-secondary: #{$font-secondary};
+  }
+
+  .dark-mode {
+    --color-bg: #2c3333;
+    --color-text: #ffffff;
+  }
+}
